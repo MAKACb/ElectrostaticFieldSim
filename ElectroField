@@ -1,0 +1,154 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static class charge
+    {
+        double q,Fx,Fy,x,y;
+    }
+
+    public static void NewCharge(charge C[], int x)
+    {
+        Scanner inp = new Scanner(System.in);
+        x=x+1;
+        C[x] = new charge();
+        System.out.println("**********************************************");/////////////////
+        System.out.print("Введите значение заряда №"+(x+1)+" в мкКл:");
+        C[x].q=inp.nextDouble();
+        System.out.println();
+
+        System.out.print("Введите положение по оси X заряда №"+(x+1)+" в мкКл:");
+        C[x].x=inp.nextDouble();
+        System.out.println();
+
+        System.out.print("Введите положение по оси Y заряда №"+(x+1)+" в мкКл:");
+        C[x].y=inp.nextDouble();
+        System.out.println();
+
+        setF(C);
+
+        System.out.println("**********************************************");
+        //CallMenue();
+
+
+    }
+
+    public static void setF(charge c[])
+    {
+        int i=0;
+        int j=0;
+        while (c[i] != null)
+        {
+            while (c[j] != null)
+            {
+                if (j!=i) //суммирование сил ото всех зарядов в поле
+                {
+                    c[i].Fx=c[i].Fx+c[i].q*c[j].q*(c[i].x-c[j].x)/Math.pow(Math.pow(c[i].x-c[j].x,2)-Math.pow(c[i].y-c[j].y,2),0.5);
+                    c[i].Fy=c[i].Fy+c[i].q*c[j].q*(c[i].y-c[j].y)/Math.pow(Math.pow(c[i].x-c[j].x,2)-Math.pow(c[i].y-c[j].y,2),0.5);
+                }
+                j=j+1;
+            }
+            j=0;
+        }
+    }
+
+    /*public static void CallMenue(charge Qq[], int xx)
+    {
+        int f=0;
+        int j=0;
+        xx=xx+1;
+        Scanner IN= new Scanner(System.in);
+        System.out.println("**********************************************");
+        System.out.println("1)добавить заряд");
+        System.out.println("2)редактировать заряд");
+        System.out.println("3)очистить заряды");
+        System.out.println("4)информация о зарядах");
+        System.out.println("5)выход");
+        System.out.println("**********************************************");
+        while (j==0)
+        {
+            if (f < 6) { if (f > 0) {j=1;}else j=0; }else j=0;
+            System.out.print("введите корректный вариант: ");
+            f=IN.nextInt();
+            System.out.println();
+        }
+        ///*
+        if (f==1)
+        {
+            Main.NewCharge(Qq, xx);
+            CallMenue(Qq,xx);
+        }
+        if (f==2)
+        {
+
+        }
+        if (f==3)
+        {
+            while(Qq[xx]!=null){Qq[xx] = null; xx=xx+1;}
+            xx=-1;////////////////
+            CallMenue(Qq,0);
+        }
+        if (f==4)
+        {
+            int g=0;
+            while(Qq[g]!=null){System.out.println("Заряд "+(g+1)+"-го заряда ="+Qq[g].q+", Fx="+Qq[g].Fx+" N/9e-3, Fy="+Qq[g].Fy+" N/9e-3"); g=g+1;}
+        }
+        if (f==5)
+        {
+
+        }
+        */
+    //}
+
+    public static void main (String[] args)
+    {
+        int k=-1;
+        Scanner in = new Scanner(System.in);
+        charge Q[];
+        Q=new charge[0];
+        /////////////
+
+        int f=0;
+        int j=0;
+        k=k+1;
+        Scanner IN = new Scanner(System.in);
+        System.out.println("**********************************************");
+        System.out.println("1)добавить заряд");
+        System.out.println("2)редактировать заряд");
+        System.out.println("3)очистить заряды");
+        System.out.println("4)информация о зарядах");
+        System.out.println("5)выход");
+        System.out.println("**********************************************");
+        while (j==0)
+        {
+            if (f < 6) { if (f > 0) {j=1;}else j=0; }else j=0;
+            System.out.print("введите корректный вариант: ");
+            f=IN.nextInt();
+            System.out.println();
+        }
+        ///*
+        if (f==1)
+        {
+            Main.NewCharge(Q, k);
+        }
+        if (f==2)
+        {
+
+        }
+        if (f==3)
+        {
+            while(Q[k]!=null){Q[k] = null; k=k+1;}
+            k=-1;////////////////
+        }
+        if (f==4)
+        {
+            int g=0;
+            while(Q[g]!=null){System.out.println("Заряд "+(g+1)+"-го заряда ="+Q[g].q+", Fx="+Q[g].Fx+" N/9e-3, Fy="+Q[g].Fy+" N/9e-3"); g=g+1;}
+        }
+        if (f==5)
+        {
+
+        }
+        /////////////
+    }
+}
